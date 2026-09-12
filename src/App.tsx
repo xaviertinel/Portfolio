@@ -21,6 +21,7 @@ export default function App() {
 
       <main>
         <section className="hero" id="top">
+          <p className="hero__banner">Hello there !</p>
           <p className="hero__role">{site.role}</p>
           <h1 className="hero__title">{site.name}</h1>
           <p className="hero__intro">{site.intro}</p>

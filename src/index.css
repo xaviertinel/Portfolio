@@ -78,6 +78,16 @@ a {
   max-width: 720px;
 }
 
+.hero__banner {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
 .hero__role {
   color: var(--accent);
   font-weight: 600;
