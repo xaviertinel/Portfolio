@@ -3,7 +3,7 @@ export const site = {
   name: 'Xavier Tinel',
   role: 'Designer & Développeur',
   intro:
-    "Je conçois et développe des produits web — du design à la mise en ligne. Voici une sélection de mes projets.",
+    "Je conçois et développe des produits web — du design à la mise en ligne. Français-espagnol bilingue. Voici une sélection de mes projets.",
   email: 'tejada.xavier@gmail.com',
   links: [
     { label: 'GitHub', url: 'https://github.com/' },
