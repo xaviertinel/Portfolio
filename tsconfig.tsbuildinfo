@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/components/ProjectCard.tsx","./src/data/books.ts","./src/data/projects.ts","./src/data/site.ts","./src/pages/Home.tsx","./src/pages/Bibliotheque/Bibliotheque.tsx","./src/pages/Bibliotheque/BookCard.tsx"],"version":"5.9.3"}
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/ProjectCard.tsx","./src/data/books.ts","./src/data/projects.ts","./src/data/site.ts","./src/pages/Home.tsx","./src/pages/Bibliotheque/Bibliotheque.tsx","./src/pages/Bibliotheque/BookCard.tsx"],"version":"5.9.3"}
