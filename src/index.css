@@ -1,16 +1,38 @@
+/* Le Murmure — Jérémy Landes / Velvetyne Type Foundry (SIL OFL 1.1) */
+@font-face {
+  font-family: 'Le Murmure';
+  src:
+    url('./fonts/LeMurmure-Regular.woff2') format('woff2'),
+    url('./fonts/LeMurmure-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --bg: #0b0d10;
-  --bg-soft: #12151a;
-  --card: #161a21;
-  --border: #242a33;
-  --text: #e8eaed;
-  --muted: #9aa4b2;
-  --accent: #6c8cff;
-  --accent-soft: rgba(108, 140, 255, 0.14);
+  --bg: #ffffff;
+  --bg-soft: #f4f4f5;
+  --card: #ffffff;
+  --border: #e4e4e7;
+  --text: #111113;
+  --muted: #6b7280;
+  --accent: #2f4bd8;
+  --accent-soft: rgba(47, 75, 216, 0.09);
   --radius: 16px;
   --maxw: 1100px;
+  --display: 'Le Murmure', Georgia, serif;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
+}
+
+/* Titres en Le Murmure */
+.hero__title,
+.section__head h2,
+.footer__title,
+.card__title,
+.nav__brand {
+  font-family: var(--display);
+  font-weight: 400;
 }
 
 * {
@@ -57,8 +79,8 @@ a {
 }
 
 .nav__brand {
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: 1.4rem;
+  letter-spacing: 0;
 }
 
 .nav__links {
@@ -87,10 +109,10 @@ a {
 }
 
 .hero__title {
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin: 12px 0 20px;
+  font-size: clamp(3.6rem, 11vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+  margin: 10px 0 22px;
 }
 
 .hero__intro {
@@ -124,7 +146,7 @@ a {
 
 .btn--primary {
   background: var(--accent);
-  color: #0b0d10;
+  color: #ffffff;
 }
 
 .btn--ghost {
@@ -145,8 +167,9 @@ a {
 }
 
 .section__head h2 {
-  font-size: 1.6rem;
-  letter-spacing: -0.02em;
+  font-size: 2.4rem;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .section__count {
@@ -177,9 +200,14 @@ a {
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
+.card {
+  box-shadow: 0 1px 2px rgba(17, 17, 19, 0.04);
+}
+
 .card:hover {
   transform: translateY(-4px);
   border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+  box-shadow: 0 12px 28px rgba(17, 17, 19, 0.1);
 }
 
 .card--featured {
@@ -226,8 +254,9 @@ a {
 }
 
 .card__title {
-  font-size: 1.2rem;
-  letter-spacing: -0.01em;
+  font-size: 1.7rem;
+  letter-spacing: 0;
+  line-height: 1.05;
 }
 
 .card__year {
@@ -282,8 +311,9 @@ a {
 }
 
 .footer__title {
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
-  letter-spacing: -0.03em;
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  letter-spacing: 0;
+  line-height: 1;
   margin-bottom: 20px;
 }
 
