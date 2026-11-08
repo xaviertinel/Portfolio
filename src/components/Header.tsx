@@ -10,31 +10,26 @@ const NAV = [
   { to: '/contact', label: 'Contact' },
 ]
 
-function useLocalClock() {
-  const [stamp, setStamp] = useState({ time: '', date: '' })
+function useLocalDate() {
+  const [date, setDate] = useState('')
 
   useEffect(() => {
     const tick = () => {
       const now = new Date()
-      setStamp({
-        time: now.toLocaleTimeString('fr-FR', {
-          hour: '2-digit',
-          minute: '2-digit',
-          timeZone: site.timeZone,
-        }),
-        date: now.toLocaleDateString('fr-FR', {
+      setDate(
+        now.toLocaleDateString('fr-FR', {
           day: '2-digit',
           month: 'short',
           timeZone: site.timeZone,
         }),
-      })
+      )
     }
     tick()
-    const id = setInterval(tick, 30_000)
+    const id = setInterval(tick, 60_000)
     return () => clearInterval(id)
   }, [])
 
-  return stamp
+  return date
 }
 
 function Nav() {
@@ -55,7 +50,7 @@ function Nav() {
 }
 
 export function Header() {
-  const { time, date } = useLocalClock()
+  const date = useLocalDate()
   const [pinned, setPinned] = useState(false)
   const lastY = useRef(0)
 
@@ -80,7 +75,7 @@ export function Header() {
               {site.shortName}
             </Link>
             <p className="topbar__meta">
-              {date} · {time} · {site.city}
+              {date} · {site.city}
             </p>
           </div>
           <div className="topbar__end">

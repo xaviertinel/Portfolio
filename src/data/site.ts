@@ -5,7 +5,7 @@ export const site = {
   shortName: 'Xavier Tinel',
   role: 'Designer & Développeur',
   /** ⚠️ À corriger : ta ville et ton fuseau horaire */
-  city: 'Paris, FR',
+  city: 'Paris',
   timeZone: 'Europe/Paris',
 
   /** Phrase d'accroche de la page d'accueil (titre animé) */
