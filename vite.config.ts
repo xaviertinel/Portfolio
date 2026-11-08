@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // Le site est servi sous https://xaviertinel.github.io/Portfolio/
-  base: '/Portfolio/',
+  // Le site est servi à la racine (Cloudflare Pages)
+  base: '/',
   plugins: [react()],
 })

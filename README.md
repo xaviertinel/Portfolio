@@ -18,6 +18,12 @@ npm run build      # génère dist/
 npm run preview    # prévisualise le build
 ```
 
+## Publication
+
+Le site est hébergé sur **Cloudflare Pages**, branché sur ce repo :
+chaque push sur `main` déclenche un build (`npm run build`, sortie `dist/`)
+et met le site en ligne. Aucun script de déploiement à lancer.
+
 ## Ajouter un projet
 
 Tout se passe dans **`src/data/projects.ts`**. Duplique un bloc dans le tableau
