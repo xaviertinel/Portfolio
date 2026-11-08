@@ -1,22 +1,11 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portfolio de Xavier Tinel : projets, design et développement." />
     <title>Xavier Tinel · Portfolio</title>
-    <script>
-      // Thème posé avant le rendu pour éviter un flash de la mauvaise couleur.
-      (function () {
-        var t
-        try { t = localStorage.getItem('theme') } catch (e) {}
-        if (t !== 'light' && t !== 'dark') {
-          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        }
-        document.documentElement.setAttribute('data-theme', t)
-      })()
-    </script>
   </head>
   <body>
     <div id="root"></div>

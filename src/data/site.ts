@@ -28,6 +28,18 @@ export const site = {
     { label: 'Domaines', items: ['Bilan carbone', 'Mobilité électrique', 'Data viz'] },
   ],
 
+  /** Accueil, section « Info » */
+  info:
+    "Je m'appelle Xavier Tinel. Je conçois des interfaces puis je les développe moi-même, pour que le produit reste cohérent de la maquette à la mise en ligne. Mes sujets de prédilection : la mesure carbone, la mobilité électrique et la donnée rendue lisible.",
+
+  /** Accueil, section « Services » */
+  services: [
+    { title: 'Design produit', kicker: 'Comprendre avant de dessiner.', text: "Des parcours pensés à partir de l'usage réel, pour que l'outil aille droit au but." },
+    { title: 'Développement front', kicker: 'Du comp au code.', text: "Des interfaces React et TypeScript fidèles à la maquette, rapides et maintenables." },
+    { title: 'Design system', kicker: 'Une cohérence qui tient.', text: "Tokens, composants et règles partagés, pour livrer plus vite sans perdre en qualité." },
+    { title: 'Data & carbone', kicker: 'Rendre la donnée actionnable.', text: "Bilans GES, TCO, trajectoires : des chiffres denses présentés pour décider." },
+  ],
+
   /** Défilement du bandeau sur la page d'accueil */
   marquee: [
     'Design produit',

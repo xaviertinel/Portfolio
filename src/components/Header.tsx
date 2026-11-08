@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { site } from '../data/site'
-import { ThemeToggle } from './ThemeToggle'
 
 const NAV = [
   { to: '/', label: 'Accueil' },
@@ -86,7 +85,6 @@ export function Header() {
           </div>
           <div className="topbar__end">
             <Nav />
-            <ThemeToggle />
           </div>
         </div>
       </header>
@@ -104,7 +102,6 @@ export function Header() {
           </Link>
           <div className="topbar__end">
             <Nav />
-            <ThemeToggle />
           </div>
         </div>
       </motion.header>

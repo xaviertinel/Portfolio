@@ -1,71 +1,107 @@
+import { Link } from 'react-router-dom'
 import { site } from '../data/site'
 import { projects } from '../data/projects'
-import { ProjectCard } from '../components/ProjectCard'
+import { Icon } from '../design-system/Icon'
 import { Marquee } from '../components/Marquee'
-import { Button } from '../components/ui'
 import { AnimatedTitle, Reveal, Stagger, StaggerGroup } from '../components/motion'
 
 export default function Home() {
   const featured = projects.filter((p) => p.featured).slice(0, 2)
-  const rest = projects.filter((p) => !p.featured)
+  const others = projects.filter((p) => !p.featured).slice(0, 4)
 
   return (
     <>
-      <section className="hero">
-        <div className="shell">
-          <Reveal>
-            <p className="xt-eyebrow">{site.role}</p>
-          </Reveal>
-          <AnimatedTitle
-            text={site.headline}
-            className="xt-display hero__title"
-            delay={0.15}
-          />
-          <Reveal delay={0.5}>
-            <p className="xt-lead hero__intro">{site.intro}</p>
-          </Reveal>
-          <Reveal delay={0.62}>
-            <div className="btn-row">
-              <Button variant="primary" to="/projets" icon="arrow-right">
-                Voir les projets
-              </Button>
-              <Button variant="secondary" href={`mailto:${site.email}`} iconLeft="envelope">
-                Me contacter
-              </Button>
-            </div>
-          </Reveal>
+      {/* Hero : titre, intro, deux grands visuels */}
+      <section className="home-hero shell">
+        <AnimatedTitle text={site.headline} className="xt-h1 home-hero__title" delay={0.1} />
+        <Reveal delay={0.4}>
+          <p className="xt-lead home-hero__intro">{site.intro}</p>
+        </Reveal>
+        <Reveal delay={0.55}>
+          <div className="visual visual--hero" aria-hidden="true">
+            <Icon name="sparkles" className="visual__icon" />
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="visual visual--wide" aria-hidden="true">
+            <Icon name="chart-line-up" className="visual__icon" />
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Info */}
+      <section className="block shell">
+        <p className="xt-h3 block__label">Info</p>
+        <Reveal className="block__body">
+          <p className="block__text">{site.info}</p>
+          <Link to="/a-propos" className="xt-link block__more">
+            En savoir plus
+          </Link>
+        </Reveal>
+      </section>
+
+      {/* Services */}
+      <section className="block block--stack shell">
+        <p className="xt-h3 block__label">Services</p>
+        <StaggerGroup className="services">
+          {site.services.map((s, i) => (
+            <Stagger key={s.title} className="service">
+              <p className="service__num">{String(i + 1).padStart(3, '0')}</p>
+              <h3 className="xt-h3">{s.title}</h3>
+              <p className="service__kicker">{s.kicker}</p>
+              <p className="xt-small">{s.text}</p>
+            </Stagger>
+          ))}
+        </StaggerGroup>
+      </section>
+
+      {/* Projets */}
+      <section className="block shell">
+        <div className="block__label">
+          <p className="xt-h3">Projets</p>
+          <p className="xt-small block__note">
+            Une sélection d'outils autour de la mesure carbone et de la mobilité électrique,
+            conçus puis développés de bout en bout.
+          </p>
+          <Link to="/projets" className="xt-link block__more">
+            Tout voir
+          </Link>
+        </div>
+
+        <div className="block__body">
+          <StaggerGroup className="work work--featured">
+            {featured.map((p) => (
+              <Stagger key={p.slug}>
+                <Link to={`/projets/${p.slug}`} className="work-item">
+                  <div className="visual visual--tile">
+                    {p.image ? <img src={p.image} alt="" /> : <Icon name={p.icon} className="visual__icon" />}
+                  </div>
+                  <p className="work-item__title">{p.title}</p>
+                  <p className="xt-small">{p.type}</p>
+                </Link>
+              </Stagger>
+            ))}
+          </StaggerGroup>
+
+          <StaggerGroup className="work work--grid">
+            {others.map((p) => (
+              <Stagger key={p.slug}>
+                <Link to={`/projets/${p.slug}`} className="work-item" aria-label={p.title}>
+                  <div className="visual visual--square">
+                    {p.image ? <img src={p.image} alt="" /> : <Icon name={p.icon} className="visual__icon" />}
+                  </div>
+                </Link>
+              </Stagger>
+            ))}
+          </StaggerGroup>
+          <p className="work-item__title">Autres projets</p>
+          <p className="xt-small">Outils métier, PWA et jeux web</p>
         </div>
       </section>
 
-      <Marquee items={site.marquee} />
-
-      <section className="section">
-        <div className="shell">
-          <Reveal>
-            <div className="section__head">
-              <h2 className="xt-h2">Sélection</h2>
-              <Button variant="ghost" to="/projets" icon="arrow-right">
-                Tous les projets ({projects.length})
-              </Button>
-            </div>
-          </Reveal>
-
-          <StaggerGroup className="grid grid--wide">
-            {featured.map((p) => (
-              <Stagger key={p.slug}>
-                <ProjectCard project={p} />
-              </Stagger>
-            ))}
-          </StaggerGroup>
-
-          <StaggerGroup className="grid">
-            {rest.map((p) => (
-              <Stagger key={p.slug}>
-                <ProjectCard project={p} />
-              </Stagger>
-            ))}
-          </StaggerGroup>
-        </div>
+      {/* Bandeau des savoir-faire (pas de logos clients) */}
+      <section className="block--band">
+        <Marquee items={site.marquee} />
       </section>
     </>
   )
