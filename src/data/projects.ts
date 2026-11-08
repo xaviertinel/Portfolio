@@ -30,6 +30,10 @@ export type Project = {
   repoUrl?: string
   /** Image dans public/projects/ : ex: "/projects/mei-pulse.png" */
   image?: string
+  /** Entreprise cliente (affichée avec son logo) */
+  client: string
+  /** Logo dans public/logos/ : ex: "/logos/edf.svg". Sans logo, le nom du client s'affiche. */
+  logo?: string
   /** Icône du visuel quand il n'y a pas d'image (voir design-system/icons.ts) */
   icon: IconName
   /** Chiffre clé affiché en bas de carte : valeur courte + libellé */
@@ -40,110 +44,96 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'mei-pulse',
-    title: 'MEi Pulse',
-    tagline: "Application mobile de mobilité électrique intelligente.",
-    year: '2025',
-    role: 'Design produit & développement',
-    type: 'Application mobile',
+    slug: 'edf-maintenance-cnpe',
+    client: 'EDF',
+    title: "Tableau de bord de la maintenance des CNPE",
+    tagline: "Piloter la maintenance des centrales nucléaires de production d'électricité.",
+    year: '',
+    role: 'Design produit',
+    type: 'Tableau de bord',
+    context: 'EDF',
     intro:
-      "Une application mobile pensée pour piloter la mobilité électrique au quotidien : suivi de charge, planification des trajets et lecture claire de la consommation. Conçue à partir d'un comp de design, puis implémentée intégralement en React.",
+      "Un tableau de bord pour suivre la maintenance des CNPE d'EDF : avancement des opérations, alertes et indicateurs clés réunis dans une lecture claire.",
     highlights: [
-      "Interface mobile complète, du comp de design au code de production",
-      "Composants alignés sur un design system existant",
-      "Composants réutilisables et états d'interface soignés",
+      "Indicateurs de maintenance consolidés sur une même vue",
+      "Lecture rapide des écarts et des priorités",
     ],
-    tags: ['React', 'Vite', 'Design system', 'Mobile'],
+    tags: ['Data viz', 'Dashboard', 'Nucléaire'],
+    icon: 'chart-line-up',
+    featured: true,
+  },
+  {
+    slug: 'enedis-veille-mobilite',
+    client: 'Enedis',
+    title: "Veille sur la mobilité électrique",
+    tagline: "Suivre les évolutions de la mobilité électrique et leurs effets sur le réseau.",
+    year: '',
+    role: 'Design produit',
+    type: 'Veille',
+    context: 'Enedis',
+    intro:
+      "Un dispositif de veille pour Enedis sur la mobilité électrique : marché, usages, infrastructures de recharge et signaux utiles au réseau de distribution.",
+    highlights: [
+      "Collecte et structuration des sources de veille",
+      "Synthèses lisibles pour les équipes",
+    ],
+    tags: ['Mobilité électrique', 'Veille', 'Data'],
     icon: 'bolt',
     featured: true,
   },
   {
-    slug: 'e-quivalent',
-    title: 'E-quivalent',
-    tagline: "Comparateur de transition électrique pour une flotte de véhicules.",
-    year: '2025',
-    role: 'Conception & développement',
-    type: 'Démonstrateur',
+    slug: 'cre-dgec-monte-carlo-irve',
+    client: 'CRE & DGEC',
+    title: "Simulations Monte Carlo d'IRVE",
+    tagline: "Simuler le déploiement des infrastructures de recharge pour véhicules électriques.",
+    year: '',
+    role: 'Design produit',
+    type: 'Simulation',
+    context: 'CRE & DGEC',
     intro:
-      "Pour chaque véhicule thermique d'une flotte, trouver l'équivalent électrique optimal : et surtout objectiver la décision. L'outil croise usage réel, coût total de possession et projections d'émissions pour rendre l'arbitrage lisible.",
+      "Des simulations Monte Carlo pour la CRE et la DGEC afin d'estimer les besoins et les effets du déploiement des IRVE selon différents scénarios.",
     highlights: [
-      "Matching multicritère entre véhicules thermiques et alternatives électriques",
-      "Calcul de TCO sur 10 ans / 180 000 km",
-      "Projections d'émissions CO₂ comparées, présentées pour la décision",
+      "Modélisation probabiliste de scénarios de recharge",
+      "Restitution des résultats pour éclairer la décision",
     ],
-    tags: ['React', 'TypeScript', 'Data', 'TCO'],
+    tags: ['Monte Carlo', 'IRVE', 'Simulation'],
     icon: 'chart-line-up',
-    impact: { value: '10 ans', label: 'de TCO comparés, sur 180 000 km' },
-    featured: true,
   },
   {
-    slug: 'trajectoire',
-    title: 'Trajectoire',
-    tagline: "Bilan carbone et trajectoire de réduction, 100 % local.",
-    year: '2025',
-    role: 'Conception & développement',
-    type: 'Outil métier',
+    slug: 'edf-ps-prediction-eolien',
+    client: 'EDF Power Solutions',
+    title: "Prédiction ML de la production des parcs éoliens",
+    tagline: "Anticiper la production des parcs éoliens grâce au machine learning.",
+    year: '',
+    role: 'Design produit',
+    type: 'Machine learning',
+    context: 'EDF Power Solutions',
     intro:
-      "Un outil de bilan gaz à effet de serre couvrant les scopes 1, 2 et 3, qui ne se contente pas de mesurer : il projette une trajectoire de réduction et déroule un plan d'actions. Aucune donnée ne quitte le navigateur.",
+      "Un modèle de machine learning pour EDF Power Solutions qui prévoit la production des parcs éoliens à partir des données météo et d'exploitation.",
     highlights: [
-      "Bilan GES complet sur les scopes 1, 2 et 3",
-      "Facteurs d'émission de la Base Empreinte® ADEME embarqués",
-      "Trajectoire de réduction et plan d'actions associé",
-      "Fonctionne intégralement en local : confidentialité des données",
+      "Prévision de production à partir des données météo",
+      "Suivi de la qualité des prédictions",
     ],
-    tags: ['React', 'ADEME', 'Carbone', 'Local-first'],
-    icon: 'leaf',
-    impact: { value: '3 scopes', label: 'couverts par le bilan GES' },
-  },
-  {
-    slug: 'empreinte-conseil',
-    title: 'Empreinte Conseil',
-    tagline: "Calculateur d'empreinte carbone appliqué aux missions de conseil.",
-    year: '2025',
-    role: 'Design produit & développement',
-    type: 'Outil métier',
-    intro:
-      "Estimer l'empreinte carbone d'une mission de conseil : déplacements, hébergement, matériel : pour la rendre visible et actionnable dès le cadrage. Implémenté depuis un comp de design sur un design system existant.",
-    highlights: [
-      "Modèle de calcul adapté au déroulé réel d'une mission",
-      "Implémentation fidèle à un design system existant",
-      "Restitution graphique pensée pour la présentation client",
-    ],
-    tags: ['React', 'Design system', 'Carbone'],
-    icon: 'briefcase',
-  },
-  {
-    slug: 'pronos-mondial',
-    title: 'Pronos Mondial',
-    tagline: "Jeu de pronostics football, installable sur mobile.",
-    year: '2026',
-    role: 'Projet personnel',
-    type: 'PWA',
-    intro:
-      "Une application web progressive installable sur l'écran d'accueil : on pronostique le score des matchs, on marque des points, on grimpe au classement. Pensée en mode solo et entièrement locale : aucun compte, aucun serveur.",
-    highlights: [
-      "PWA installable, utilisable hors connexion",
-      "Système de points et classement",
-      "Données structurées pour brancher une vraie API ensuite",
-    ],
-    tags: ['PWA', 'React', 'Offline', 'Mobile'],
-    icon: 'trophy',
-  },
-  {
-    slug: 'mathware',
-    title: 'MathWare',
-    tagline: 'Mini-jeux mathématiques.',
-    year: '2025',
-    role: 'Projet personnel',
-    type: 'Jeu web',
-    intro:
-      "Une série de mini-jeux courts autour du calcul mental, pensés pour être pris en main en quelques secondes et rejoués sans friction.",
-    highlights: [
-      'Plusieurs modes de jeu courts',
-      'Boucle de jeu immédiate, sans écran de configuration',
-    ],
-    tags: ['React', 'Jeu', 'Interaction'],
+    tags: ['Machine learning', 'Éolien', 'Prévision'],
     icon: 'brain-circuit',
+  },
+  {
+    slug: 'onee-rapprochement-inventaire',
+    client: 'ONEE',
+    title: "Rapprochement inventaire physique et comptable par IA",
+    tagline: "Réconcilier l'inventaire physique et l'inventaire comptable avec l'IA.",
+    year: '',
+    role: 'Design produit',
+    type: 'IA',
+    context: 'ONEE',
+    intro:
+      "Un outil d'IA pour l'ONEE qui rapproche l'inventaire physique des immobilisations et l'inventaire comptable, et met en évidence les écarts à traiter.",
+    highlights: [
+      "Appariement automatique des lignes physiques et comptables",
+      "Mise en évidence des écarts à analyser",
+    ],
+    tags: ['IA', 'Inventaire', 'Finance'],
+    icon: 'sparkles',
   },
 ]
 

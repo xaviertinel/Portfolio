@@ -751,6 +751,9 @@ img {
 
 .row__n,
 .row__type {
+  max-width: 34ch;
+  text-align: right;
+  line-height: 1.4;
   font-size: 0.875rem;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
@@ -793,9 +796,6 @@ img {
   transform: translateY(-50%);
 }
 
-.row:hover .row__type {
-  opacity: 0;
-}
 
 @media (max-width: 880px) {
   .row {
@@ -819,4 +819,55 @@ img {
   .row:hover .row__l {
     transform: none;
   }
+}
+
+/* ---------- Logos clients ---------- */
+.client-logo {
+  display: inline-block;
+  height: 1.5rem;
+  width: auto;
+  vertical-align: middle;
+}
+
+.client-logo--text {
+  height: auto;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.client-logo--lg {
+  height: 3rem;
+}
+
+.client-logo--lg.client-logo--text {
+  height: auto;
+  font-size: 1.1rem;
+  padding: var(--space-2) var(--space-3);
+}
+
+.row__type {
+  max-width: 34ch;
+  text-align: right;
+  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.row:hover .client-logo--text {
+  border-color: currentColor;
+}
+
+.visual .client-logo--text,
+.xt-card__media .client-logo--text {
+  background: var(--bg);
+  border-color: var(--bg);
+  color: var(--text);
 }

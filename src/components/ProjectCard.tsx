@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import type { Project } from '../data/projects'
 import { Icon } from '../design-system/Icon'
 import { Tag } from './ui'
+import { ClientLogo } from './ClientLogo'
 
 /** Carte projet Morpho irisé : toute la carte est le lien (un seul arrêt de tabulation). */
 export function ProjectCard({ project }: { project: Project }) {
@@ -11,14 +12,13 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.image ? (
           <img src={project.image} alt="" loading="lazy" />
         ) : (
-          <Icon name={project.icon} size="lg" />
+          <ClientLogo project={project} className="client-logo--lg" />
         )}
       </div>
 
       <div className="xt-card__meta">
-        <span className="xt-eyebrow">
-          {project.type} · {project.year}
-        </span>
+        <ClientLogo project={project} />
+        <span className="xt-eyebrow">{project.type}</span>
       </div>
 
       <h3 className="xt-h3">{project.title}</h3>

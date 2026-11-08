@@ -14,10 +14,10 @@ export default function ProjectDetail() {
   const next = projects[(index + 1) % projects.length]
 
   const facts = [
-    { label: 'Année', value: project.year },
+    { label: 'Client', value: project.client },
+    ...(project.year ? [{ label: 'Année', value: project.year }] : []),
     { label: 'Rôle', value: project.role },
     { label: 'Type', value: project.type },
-    ...(project.context ? [{ label: 'Contexte', value: project.context }] : []),
   ]
 
   return (

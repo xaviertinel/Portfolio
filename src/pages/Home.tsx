@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { site } from '../data/site'
 import { projects } from '../data/projects'
+import { ClientLogo } from '../components/ClientLogo'
 import { Icon } from '../design-system/Icon'
 import { Marquee } from '../components/Marquee'
 import { AnimatedTitle, Reveal, Stagger, StaggerGroup } from '../components/motion'
@@ -60,8 +61,7 @@ export default function Home() {
         <div className="block__label">
           <p className="xt-h3">Projets</p>
           <p className="xt-small block__note">
-            Une sélection d'outils autour de la mesure carbone et de la mobilité électrique,
-            conçus puis développés de bout en bout.
+            Des missions data, simulation et IA pour les acteurs de l'énergie.
           </p>
           <Link to="/projets" className="xt-link block__more">
             Tout voir
@@ -74,10 +74,10 @@ export default function Home() {
               <Stagger key={p.slug}>
                 <Link to={`/projets/${p.slug}`} className="work-item">
                   <div className="visual visual--tile">
-                    {p.image ? <img src={p.image} alt="" /> : <Icon name={p.icon} className="visual__icon" />}
+                    {p.image ? <img src={p.image} alt="" /> : <ClientLogo project={p} className="client-logo--lg" />}
                   </div>
                   <p className="work-item__title">{p.title}</p>
-                  <p className="xt-small">{p.type}</p>
+                  <p className="xt-small">{p.client} · {p.type}</p>
                 </Link>
               </Stagger>
             ))}
@@ -88,14 +88,14 @@ export default function Home() {
               <Stagger key={p.slug}>
                 <Link to={`/projets/${p.slug}`} className="work-item" aria-label={p.title}>
                   <div className="visual visual--square">
-                    {p.image ? <img src={p.image} alt="" /> : <Icon name={p.icon} className="visual__icon" />}
+                    {p.image ? <img src={p.image} alt="" /> : <ClientLogo project={p} className="client-logo--lg" />}
                   </div>
                 </Link>
               </Stagger>
             ))}
           </StaggerGroup>
           <p className="work-item__title">Autres projets</p>
-          <p className="xt-small">Outils métier, PWA et jeux web</p>
+          <p className="xt-small">Data, simulation et IA pour l'énergie</p>
         </div>
       </section>
 

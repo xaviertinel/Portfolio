@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import type { CSSProperties } from 'react'
 import { projects } from '../data/projects'
+import { ClientLogo } from '../components/ClientLogo'
 
 const EASE = [0.2, 0.8, 0.2, 1] as const
 
@@ -27,18 +28,18 @@ export default function Work() {
               <span className="row__n" aria-hidden="true">
                 [{String(i + 1).padStart(2, '0')}]
               </span>
-              <span className="row__name" aria-label={p.title}>
+              <span className="row__name">
                 <span aria-hidden="true">
-                  {[...p.title].map((c, k) => (
+                  {[...p.client].map((c, k) => (
                     <span key={k} className="row__l" style={{ '--k': k } as CSSProperties}>
                       {c === ' ' ? ' ' : c}
                     </span>
                   ))}
                 </span>
               </span>
-              <span className="row__type">[{p.type}]</span>
-              <span className="row__peek" aria-hidden="true">
-                {p.tagline}
+              <span className="row__type">
+                {p.logo && <ClientLogo project={p} />}
+                <span>{p.title}</span>
               </span>
             </Link>
           </motion.li>
