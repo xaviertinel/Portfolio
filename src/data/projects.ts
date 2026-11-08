@@ -42,12 +42,11 @@ export const projects: Project[] = [
     year: '2025',
     role: 'Design produit & développement',
     type: 'Application mobile',
-    context: 'Concept Enedis',
     intro:
       "Une application mobile pensée pour piloter la mobilité électrique au quotidien : suivi de charge, planification des trajets et lecture claire de la consommation. Conçue à partir d'un comp de design, puis implémentée intégralement en React.",
     highlights: [
       "Interface mobile complète, du comp de design au code de production",
-      "Respect strict d'un design system existant (charte « énergie électrifiée »)",
+      "Composants alignés sur un design system existant",
       "Composants réutilisables et états d'interface soignés",
     ],
     tags: ['React', 'Vite', 'Design system', 'Mobile'],
@@ -61,7 +60,6 @@ export const projects: Project[] = [
     year: '2025',
     role: 'Conception & développement',
     type: 'Démonstrateur',
-    context: 'Augmented Consultant Award',
     intro:
       "Pour chaque véhicule thermique d'une flotte, trouver l'équivalent électrique optimal — et surtout objectiver la décision. L'outil croise usage réel, coût total de possession et projections d'émissions pour rendre l'arbitrage lisible.",
     highlights: [
@@ -102,7 +100,7 @@ export const projects: Project[] = [
       "Estimer l'empreinte carbone d'une mission de conseil — déplacements, hébergement, matériel — pour la rendre visible et actionnable dès le cadrage. Implémenté depuis un comp de design sur un design system existant.",
     highlights: [
       "Modèle de calcul adapté au déroulé réel d'une mission",
-      "Implémentation fidèle à un design system d'entreprise",
+      "Implémentation fidèle à un design system existant",
       "Restitution graphique pensée pour la présentation client",
     ],
     tags: ['React', 'Design system', 'Carbone'],
