@@ -11,7 +11,7 @@ import './index.css'
 // (voir public/_redirects), donc les URLs propres fonctionnent en lien direct.
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
