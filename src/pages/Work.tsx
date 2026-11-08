@@ -7,11 +7,11 @@ export default function Work() {
     <section className="section section--top">
       <div className="shell">
         <Reveal>
-          <p className="eyebrow">{projects.length} projets</p>
+          <p className="xt-eyebrow">{projects.length} projets</p>
         </Reveal>
-        <AnimatedTitle text="Projets" className="page__title display" delay={0.1} />
+        <AnimatedTitle text="Projets" className="xt-h1 page__title" delay={0.1} />
         <Reveal delay={0.35}>
-          <p className="page__lead">
+          <p className="xt-lead page__lead">
             Des outils autour de la mesure carbone et de la mobilité électrique,
             et quelques projets personnels.
           </p>

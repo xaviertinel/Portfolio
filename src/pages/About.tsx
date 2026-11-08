@@ -6,9 +6,9 @@ export default function About() {
     <section className="section section--top">
       <div className="shell">
         <Reveal>
-          <p className="eyebrow">{site.role}</p>
+          <p className="xt-eyebrow">{site.role}</p>
         </Reveal>
-        <AnimatedTitle text="À propos" className="page__title display" delay={0.1} />
+        <AnimatedTitle text="À propos" className="xt-h1 page__title" delay={0.1} />
 
         <div className="about">
           <div className="about__text">
@@ -26,7 +26,7 @@ export default function About() {
               {site.skills.map((group) => (
                 <Stagger key={group.label}>
                   <div className="skill">
-                    <h3 className="skill__label">{group.label}</h3>
+                    <h3 className="xt-h3 skill__label">{group.label}</h3>
                     <ul className="skill__items">
                       {group.items.map((item) => (
                         <li key={item}>{item}</li>

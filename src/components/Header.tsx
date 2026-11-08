@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { site } from '../data/site'
+import { ThemeToggle } from './ThemeToggle'
 
 const NAV = [
   { to: '/', label: 'Accueil' },
@@ -80,10 +81,13 @@ export function Header() {
               {site.shortName}
             </Link>
             <p className="topbar__meta">
-              {date} — {time} · {site.city}
+              {date} · {time} · {site.city}
             </p>
           </div>
-          <Nav />
+          <div className="topbar__end">
+            <Nav />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -98,7 +102,10 @@ export function Header() {
           <Link to="/" className="topbar__name">
             {site.shortName}
           </Link>
-          <Nav />
+          <div className="topbar__end">
+            <Nav />
+            <ThemeToggle />
+          </div>
         </div>
       </motion.header>
     </>

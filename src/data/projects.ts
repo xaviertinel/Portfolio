@@ -1,3 +1,5 @@
+import type { IconName } from '../design-system/icons'
+
 // ────────────────────────────────────────────────────────────────
 //  AJOUTER UN PROJET
 //  Duplique un bloc, change les valeurs. La grille, la page /projets
@@ -5,7 +7,7 @@
 // ────────────────────────────────────────────────────────────────
 
 export type Project = {
-  /** Identifiant unique en kebab-case — sert d'URL : /projets/<slug> */
+  /** Identifiant unique en kebab-case : sert d'URL : /projets/<slug> */
   slug: string
   title: string
   /** Une phrase courte, affichée sous le titre */
@@ -16,7 +18,7 @@ export type Project = {
   role: string
   /** Nature du projet (Produit, Outil interne, Démonstrateur…) */
   type: string
-  /** Contexte / commanditaire — optionnel */
+  /** Contexte / commanditaire : optionnel */
   context?: string
   /** Paragraphe d'intro sur la fiche détaillée */
   intro: string
@@ -26,10 +28,12 @@ export type Project = {
   tags: string[]
   liveUrl?: string
   repoUrl?: string
-  /** Image dans public/projects/ — ex: "/projects/mei-pulse.png" */
+  /** Image dans public/projects/ : ex: "/projects/mei-pulse.png" */
   image?: string
-  /** Couleur d'accent de la fiche (dégradé de la vignette) */
-  accent?: string
+  /** Icône du visuel quand il n'y a pas d'image (voir design-system/icons.ts) */
+  icon: IconName
+  /** Chiffre clé affiché en bas de carte : valeur courte + libellé */
+  impact?: { value: string; label: string }
   /** Remonte le projet en tête de liste */
   featured?: boolean
 }
@@ -50,7 +54,7 @@ export const projects: Project[] = [
       "Composants réutilisables et états d'interface soignés",
     ],
     tags: ['React', 'Vite', 'Design system', 'Mobile'],
-    accent: '#2f4bd8',
+    icon: 'bolt',
     featured: true,
   },
   {
@@ -61,14 +65,15 @@ export const projects: Project[] = [
     role: 'Conception & développement',
     type: 'Démonstrateur',
     intro:
-      "Pour chaque véhicule thermique d'une flotte, trouver l'équivalent électrique optimal — et surtout objectiver la décision. L'outil croise usage réel, coût total de possession et projections d'émissions pour rendre l'arbitrage lisible.",
+      "Pour chaque véhicule thermique d'une flotte, trouver l'équivalent électrique optimal : et surtout objectiver la décision. L'outil croise usage réel, coût total de possession et projections d'émissions pour rendre l'arbitrage lisible.",
     highlights: [
       "Matching multicritère entre véhicules thermiques et alternatives électriques",
       "Calcul de TCO sur 10 ans / 180 000 km",
       "Projections d'émissions CO₂ comparées, présentées pour la décision",
     ],
     tags: ['React', 'TypeScript', 'Data', 'TCO'],
-    accent: '#0f9d6b',
+    icon: 'chart-line-up',
+    impact: { value: '10 ans', label: 'de TCO comparés, sur 180 000 km' },
     featured: true,
   },
   {
@@ -84,10 +89,11 @@ export const projects: Project[] = [
       "Bilan GES complet sur les scopes 1, 2 et 3",
       "Facteurs d'émission de la Base Empreinte® ADEME embarqués",
       "Trajectoire de réduction et plan d'actions associé",
-      "Fonctionne intégralement en local — confidentialité des données",
+      "Fonctionne intégralement en local : confidentialité des données",
     ],
     tags: ['React', 'ADEME', 'Carbone', 'Local-first'],
-    accent: '#1f7a5c',
+    icon: 'leaf',
+    impact: { value: '3 scopes', label: 'couverts par le bilan GES' },
   },
   {
     slug: 'empreinte-conseil',
@@ -97,14 +103,14 @@ export const projects: Project[] = [
     role: 'Design produit & développement',
     type: 'Outil métier',
     intro:
-      "Estimer l'empreinte carbone d'une mission de conseil — déplacements, hébergement, matériel — pour la rendre visible et actionnable dès le cadrage. Implémenté depuis un comp de design sur un design system existant.",
+      "Estimer l'empreinte carbone d'une mission de conseil : déplacements, hébergement, matériel : pour la rendre visible et actionnable dès le cadrage. Implémenté depuis un comp de design sur un design system existant.",
     highlights: [
       "Modèle de calcul adapté au déroulé réel d'une mission",
       "Implémentation fidèle à un design system existant",
       "Restitution graphique pensée pour la présentation client",
     ],
     tags: ['React', 'Design system', 'Carbone'],
-    accent: '#c2410c',
+    icon: 'briefcase',
   },
   {
     slug: 'pronos-mondial',
@@ -114,14 +120,14 @@ export const projects: Project[] = [
     role: 'Projet personnel',
     type: 'PWA',
     intro:
-      "Une application web progressive installable sur l'écran d'accueil : on pronostique le score des matchs, on marque des points, on grimpe au classement. Pensée en mode solo et entièrement locale — aucun compte, aucun serveur.",
+      "Une application web progressive installable sur l'écran d'accueil : on pronostique le score des matchs, on marque des points, on grimpe au classement. Pensée en mode solo et entièrement locale : aucun compte, aucun serveur.",
     highlights: [
       "PWA installable, utilisable hors connexion",
       "Système de points et classement",
       "Données structurées pour brancher une vraie API ensuite",
     ],
     tags: ['PWA', 'React', 'Offline', 'Mobile'],
-    accent: '#7c3aed',
+    icon: 'trophy',
   },
   {
     slug: 'mathware',
@@ -137,7 +143,7 @@ export const projects: Project[] = [
       'Boucle de jeu immédiate, sans écran de configuration',
     ],
     tags: ['React', 'Jeu', 'Interaction'],
-    accent: '#0891b2',
+    icon: 'brain-circuit',
   },
 ]
 

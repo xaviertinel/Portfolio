@@ -1,4 +1,5 @@
 import { site } from '../data/site'
+import { Icon } from '../design-system/Icon'
 import { AnimatedTitle, Reveal, Stagger, StaggerGroup } from '../components/motion'
 
 export default function Contact() {
@@ -6,19 +7,19 @@ export default function Contact() {
     <section className="section section--top">
       <div className="shell">
         <Reveal>
-          <p className="eyebrow">Disponible pour de nouveaux projets</p>
+          <p className="xt-eyebrow">Disponible pour de nouveaux projets</p>
         </Reveal>
-        <AnimatedTitle text="Contact" className="page__title display" delay={0.1} />
+        <AnimatedTitle text="Contact" className="xt-h1 page__title" delay={0.1} />
         <Reveal delay={0.35}>
-          <p className="page__lead">
-            Un projet, une question, ou juste envie d'échanger — écris-moi, je
+          <p className="xt-lead page__lead">
+            Un projet, une question, ou juste envie d'échanger ? Écrivez-moi, je
             réponds rapidement.
           </p>
         </Reveal>
 
         <StaggerGroup className="contact" gap={0.1}>
           <Stagger>
-            <a className="contact__primary" href={`mailto:${site.email}`}>
+            <a className="xt-h2 xt-link contact__primary" href={`mailto:${site.email}`}>
               {site.email}
             </a>
           </Stagger>
@@ -36,12 +37,12 @@ export default function Contact() {
                 <div className="contact__row" key={l.label}>
                   <span className="contact__key">{l.label}</span>
                   <a
-                    className="contact__val contact__val--link"
+                    className="xt-link contact__val"
                     href={l.url}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Voir le profil →
+                    Voir le profil <Icon name="arrow-up-right" size="sm" />
                   </a>
                 </div>
               ))}

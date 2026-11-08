@@ -1,4 +1,4 @@
-// Infos personnelles affichées partout sur le site — modifie librement.
+// Infos personnelles affichées partout sur le site. Modifie librement.
 export const site = {
   name: 'Xavier Tinel',
   /** Affiché en petit dans l'en-tête */
@@ -12,7 +12,7 @@ export const site = {
   headline: "Je conçois et développe des produits web.",
   /** Paragraphe sous le titre */
   intro:
-    "Du design à la mise en ligne, je construis des outils clairs — souvent autour de la transition énergétique et de la mesure carbone. Français-espagnol bilingue.",
+    "Du design à la mise en ligne, je construis des outils clairs, souvent autour de la transition énergétique et de la mesure carbone. Français-espagnol bilingue.",
 
   /** Page À propos */
   about: [

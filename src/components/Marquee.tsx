@@ -8,7 +8,7 @@ export function Marquee({ items }: { items: string[] }) {
         {track.map((item, i) => (
           <span key={i} className="marquee__item">
             {item}
-            <span className="marquee__dot">◦</span>
+            <span className="marquee__dot" />
           </span>
         ))}
       </div>

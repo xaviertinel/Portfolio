@@ -1,5 +1,7 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { getProject, projects } from '../data/projects'
+import { Icon } from '../design-system/Icon'
+import { Button, KpiStat, Tag } from '../components/ui'
 import { AnimatedTitle, Reveal, Stagger, StaggerGroup } from '../components/motion'
 
 export default function ProjectDetail() {
@@ -22,25 +24,26 @@ export default function ProjectDetail() {
     <article className="section section--top">
       <div className="shell">
         <Reveal>
-          <Link to="/projets" className="backlink">
-            ← Projets
+          <Link to="/projets" className="xt-btn xt-btn--ghost backlink">
+            <Icon name="angle-small-right" size="sm" className="flip" />
+            Projets
           </Link>
         </Reveal>
 
         <AnimatedTitle
           text={project.title}
-          className="page__title display"
+          className="xt-h1 page__title"
           delay={0.1}
         />
         <Reveal delay={0.35}>
-          <p className="page__lead">{project.tagline}</p>
+          <p className="xt-lead page__lead">{project.tagline}</p>
         </Reveal>
 
         <StaggerGroup className="facts" gap={0.07}>
           {facts.map((f) => (
             <Stagger key={f.label}>
               <div className="fact">
-                <p className="fact__label">{f.label}</p>
+                <p className="xt-eyebrow">{f.label}</p>
                 <p className="fact__value">{f.value}</p>
               </div>
             </Stagger>
@@ -48,18 +51,11 @@ export default function ProjectDetail() {
         </StaggerGroup>
 
         <Reveal>
-          <div
-            className="banner"
-            style={
-              { '--accent': project.accent ?? '#2f4bd8' } as React.CSSProperties
-            }
-          >
+          <div className="banner">
             {project.image ? (
               <img src={project.image} alt={project.title} />
             ) : (
-              <span className="banner__glyph" aria-hidden="true">
-                {project.title.charAt(0)}
-              </span>
+              <Icon name={project.icon} className="banner__icon" />
             )}
           </div>
         </Reveal>
@@ -69,8 +65,16 @@ export default function ProjectDetail() {
             <p className="prose__intro">{project.intro}</p>
           </Reveal>
 
+          {project.impact && (
+            <Reveal>
+              <div className="prose__kpi">
+                <KpiStat value={project.impact.value} label={project.impact.label} />
+              </div>
+            </Reveal>
+          )}
+
           <Reveal>
-            <h2 className="prose__heading display">Ce que fait le projet</h2>
+            <h2 className="xt-h2 prose__heading">Ce que fait le projet</h2>
           </Reveal>
           <StaggerGroup gap={0.08}>
             {project.highlights.map((h, i) => (
@@ -84,35 +88,25 @@ export default function ProjectDetail() {
           </StaggerGroup>
 
           <Reveal>
-            <ul className="taglist">
+            <div className="taglist">
               {project.tags.map((t) => (
-                <li key={t}>{t}</li>
+                <Tag key={t}>{t}</Tag>
               ))}
-            </ul>
+            </div>
           </Reveal>
 
           {(project.liveUrl || project.repoUrl) && (
             <Reveal>
               <div className="btn-row">
                 {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn--primary"
-                  >
-                    Voir en ligne →
-                  </a>
+                  <Button variant="primary" href={project.liveUrl} icon="arrow-up-right">
+                    Voir en ligne
+                  </Button>
                 )}
                 {project.repoUrl && (
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn--ghost"
-                  >
+                  <Button variant="secondary" href={project.repoUrl} iconLeft="github">
                     Code source
-                  </a>
+                  </Button>
                 )}
               </div>
             </Reveal>
@@ -121,8 +115,8 @@ export default function ProjectDetail() {
 
         <Reveal>
           <Link to={`/projets/${next.slug}`} className="nextlink">
-            <span className="nextlink__label">Projet suivant</span>
-            <span className="nextlink__title display">{next.title}</span>
+            <span className="xt-eyebrow">Projet suivant</span>
+            <span className="xt-h2 nextlink__title">{next.title}</span>
           </Link>
         </Reveal>
       </div>

@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
 import { site } from '../data/site'
 import { projects } from '../data/projects'
 import { ProjectCard } from '../components/ProjectCard'
 import { Marquee } from '../components/Marquee'
+import { Button } from '../components/ui'
 import { AnimatedTitle, Reveal, Stagger, StaggerGroup } from '../components/motion'
 
 export default function Home() {
@@ -14,24 +14,24 @@ export default function Home() {
       <section className="hero">
         <div className="shell">
           <Reveal>
-            <p className="eyebrow">{site.role}</p>
+            <p className="xt-eyebrow">{site.role}</p>
           </Reveal>
           <AnimatedTitle
             text={site.headline}
-            className="hero__title display"
+            className="xt-display hero__title"
             delay={0.15}
           />
           <Reveal delay={0.5}>
-            <p className="hero__intro">{site.intro}</p>
+            <p className="xt-lead hero__intro">{site.intro}</p>
           </Reveal>
           <Reveal delay={0.62}>
             <div className="btn-row">
-              <Link to="/projets" className="btn btn--primary">
+              <Button variant="primary" to="/projets" icon="arrow-right">
                 Voir les projets
-              </Link>
-              <a href={`mailto:${site.email}`} className="btn btn--ghost">
+              </Button>
+              <Button variant="secondary" href={`mailto:${site.email}`} iconLeft="envelope">
                 Me contacter
-              </a>
+              </Button>
             </div>
           </Reveal>
         </div>
@@ -43,10 +43,10 @@ export default function Home() {
         <div className="shell">
           <Reveal>
             <div className="section__head">
-              <h2 className="section__title display">Sélection</h2>
-              <Link to="/projets" className="section__more">
-                Tous les projets ({projects.length}) →
-              </Link>
+              <h2 className="xt-h2">Sélection</h2>
+              <Button variant="ghost" to="/projets" icon="arrow-right">
+                Tous les projets ({projects.length})
+              </Button>
             </div>
           </Reveal>
 
