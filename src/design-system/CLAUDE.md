@@ -25,3 +25,9 @@ Design system du portfolio de Xavier Tinel (React 19 + TypeScript + Vite). Lire 
 - Un seul style d'icônes (UIcons Regular Rounded). Mention « Icônes : UIcons par Flaticon » + lien dans le footer.
 - Pas de tiret long (—) en milieu de phrase dans les textes.
 - Les chiffres des aperçus sont des exemples à remplacer.
+
+## Décisions du site (2026-11)
+
+- Polices : Helvetica partout (`font-display` et `font-body`), plus de Google Fonts. Titres en graisse 700.
+- Thème clair uniquement, fond blanc.
+- Aucun nom de client ni d'employeur dans les textes : secteur générique. Les démos sont sur données synthétiques.

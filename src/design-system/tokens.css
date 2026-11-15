@@ -92,7 +92,7 @@
   --bp-sm: 640px;
   --bp-md: 1024px;
   --bp-lg: 1280px;
-  --font-display: "DM Serif Display", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
-  --font-code: "Fira Code", ui-monospace, monospace;
+  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }

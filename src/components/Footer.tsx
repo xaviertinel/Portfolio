@@ -1,31 +1,24 @@
 import { site } from '../data/site'
+import { Icon } from '../design-system/Icon'
+import { CV_FILENAME, cvUrl } from '../lib/assets'
 
 export function Footer() {
   return (
     <footer className="footer">
       <div className="shell">
-        <h2 className="xt-h1 footer__title">
-          Échangeons,
-          <br />
-          construisons ensemble.
-        </h2>
+        <h2 className="xt-h1 footer__title">Échangeons,<br />construisons ensemble.</h2>
         <div className="footer__links">
           <a href={`mailto:${site.email}`}>{site.email}</a>
           {site.links.map((l) => (
-            <a key={l.label} href={l.url} target="_blank" rel="noreferrer">
-              {l.label}
-            </a>
+            <a key={l.label} href={l.url} target="_blank" rel="noreferrer">{l.label}</a>
           ))}
+          <a href={cvUrl} download={CV_FILENAME}>CV <Icon name="download" /></a>
         </div>
         <div className="footer__bottom xt-small">
-          <span>
-            © {new Date().getFullYear()} {site.name}, {site.city}
-          </span>
+          <span>© {new Date().getFullYear()} {site.name}, {site.city}</span>
           <span>
             Icônes :{' '}
-            <a className="xt-link" href="https://www.flaticon.com/uicons" target="_blank" rel="noreferrer">
-              UIcons par Flaticon
-            </a>
+            <a className="xt-link" href="https://www.flaticon.com/uicons" target="_blank" rel="noreferrer">UIcons par Flaticon</a>
           </span>
         </div>
       </div>

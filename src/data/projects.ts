@@ -2,150 +2,186 @@ import type { IconName } from '../design-system/icons'
 
 // ────────────────────────────────────────────────────────────────
 //  AJOUTER UN PROJET
-//  Duplique un bloc, change les valeurs. La grille, la page /projets
-//  et la fiche détaillée /projets/<slug> se génèrent automatiquement.
+//  Dupliquez un bloc et changez les valeurs. `demo` désigne la démo
+//  interactive (voir src/demos/index.tsx). Jamais de nom de client.
 // ────────────────────────────────────────────────────────────────
 
+export type DemoKey = 'bi' | 'tco' | 'matching' | 'wind' | 'forecast' | 'trajectory' | 'math'
+
 export type Project = {
-  /** Identifiant unique en kebab-case : sert d'URL : /projets/<slug> */
+  /** Identifiant en kebab-case, sert d'URL : /projets/<slug> */
   slug: string
   title: string
-  /** Une phrase courte, affichée sous le titre */
   tagline: string
-  /** Année ou période */
   year: string
-  /** Ton rôle sur le projet */
   role: string
-  /** Nature du projet (Produit, Outil interne, Démonstrateur…) */
-  type: string
-  /** Contexte / commanditaire : optionnel */
-  context?: string
-  /** Paragraphe d'intro sur la fiche détaillée */
+  /** Secteur générique, jamais de nom de client */
+  sector: string
+  /** Qualité mise en avant pour un recruteur */
+  quality: string
   intro: string
-  /** Points clés : ce que fait le projet, ce que tu as construit */
+  /** Démarche : ce que j'ai fait, étape par étape */
   highlights: string[]
-  /** Technos / mots-clés */
   tags: string[]
-  liveUrl?: string
-  repoUrl?: string
-  /** Image dans public/projects/ : ex: "/projects/mei-pulse.png" */
-  image?: string
-  /** Icône du visuel quand il n'y a pas d'image (voir design-system/icons.ts) */
   icon: IconName
-  /** Chiffre clé affiché en bas de carte : valeur courte + libellé */
+  /** Chiffre clé : valeur courte + libellé */
   impact?: { value: string; label: string }
-  /** Remonte le projet en tête de liste */
+  demo: DemoKey
+  /** Une phrase qui explique ce que montre la démo */
+  demoNote: string
   featured?: boolean
 }
 
 export const projects: Project[] = [
   {
-    slug: 'mei-pulse',
-    title: 'MEi Pulse',
-    tagline: "Application mobile de mobilité électrique intelligente.",
-    year: '2025',
-    role: 'Design produit & développement',
-    type: 'Application mobile',
+    slug: 'pilotage-maintenance',
+    title: 'Piloter la maintenance de sites industriels',
+    tagline: 'Un tableau de bord décisionnel bâti avec les opérateurs de terrain.',
+    year: '2025 · 2026',
+    role: 'Data Scientist',
+    sector: 'Production nucléaire',
+    quality: 'Visualisation BI',
     intro:
-      "Une application mobile pensée pour piloter la mobilité électrique au quotidien : suivi de charge, planification des trajets et lecture claire de la consommation. Conçue à partir d'un comp de design, puis implémentée intégralement en React.",
+      "La direction des opérations voulait une vision stratégique de la maintenance de ses sites. J'ai défini les indicateurs avec les équipes de terrain, fiabilisé des bases volumineuses à fort enjeu de sûreté, puis conçu le tableau de bord qui sert aujourd'hui aux arbitrages.",
     highlights: [
-      "Interface mobile complète, du comp de design au code de production",
-      "Composants alignés sur un design system existant",
-      "Composants réutilisables et états d'interface soignés",
+      'Ateliers avec les opérateurs pour définir plus de 50 indicateurs métiers',
+      'Traitement et contrôle qualité de bases de données volumineuses',
+      'Modèle de données et tableau de bord décisionnel sous Power BI',
+      "Lecture en trois niveaux : direction, site, équipe d'intervention",
     ],
-    tags: ['React', 'Vite', 'Design system', 'Mobile'],
-    icon: 'bolt',
-    featured: true,
-  },
-  {
-    slug: 'e-quivalent',
-    title: 'E-quivalent',
-    tagline: "Comparateur de transition électrique pour une flotte de véhicules.",
-    year: '2025',
-    role: 'Conception & développement',
-    type: 'Démonstrateur',
-    intro:
-      "Pour chaque véhicule thermique d'une flotte, trouver l'équivalent électrique optimal : et surtout objectiver la décision. L'outil croise usage réel, coût total de possession et projections d'émissions pour rendre l'arbitrage lisible.",
-    highlights: [
-      "Matching multicritère entre véhicules thermiques et alternatives électriques",
-      "Calcul de TCO sur 10 ans / 180 000 km",
-      "Projections d'émissions CO₂ comparées, présentées pour la décision",
-    ],
-    tags: ['React', 'TypeScript', 'Data', 'TCO'],
+    tags: ['Power BI', 'SQL', 'Python', 'Indicateurs', 'Sûreté'],
     icon: 'chart-line-up',
-    impact: { value: '10 ans', label: 'de TCO comparés, sur 180 000 km' },
+    impact: { value: '50+', label: 'indicateurs définis avec le terrain' },
+    demo: 'bi',
+    demoNote: 'Filtrez par site et par indicateur : les chiffres, le classement et la tendance se recalculent.',
     featured: true,
   },
   {
-    slug: 'trajectoire',
-    title: 'Trajectoire',
-    tagline: "Bilan carbone et trajectoire de réduction, 100 % local.",
-    year: '2025',
-    role: 'Conception & développement',
-    type: 'Outil métier',
+    slug: 'electrification-flotte',
+    title: 'Électrifier une flotte de véhicules',
+    tagline: 'Répartir un budget annuel et objectiver chaque remplacement par le TCO.',
+    year: '2025 · 2026',
+    role: 'Data Scientist',
+    sector: 'Réseau de distribution',
+    quality: 'Modélisation économique',
     intro:
-      "Un outil de bilan gaz à effet de serre couvrant les scopes 1, 2 et 3, qui ne se contente pas de mesurer : il projette une trajectoire de réduction et déroule un plan d'actions. Aucune donnée ne quitte le navigateur.",
+      "Objectif : 100 % de véhicules électriques à horizon 2030. J'ai construit le modèle qui répartit le budget annuel sur le territoire, calcule le coût total de possession de chaque remplacement et anticipe l'impact sur les activités.",
     highlights: [
-      "Bilan GES complet sur les scopes 1, 2 et 3",
-      "Facteurs d'émission de la Base Empreinte® ADEME embarqués",
-      "Trajectoire de réduction et plan d'actions associé",
-      "Fonctionne intégralement en local : confidentialité des données",
+      'Répartition territoriale du budget annuel de 75 M€',
+      'Calcul de TCO sur 10 ans, véhicule par véhicule',
+      "Analyses prédictives de l'usage réel des véhicules",
+      'Trajectoire bas-carbone et jalons annuels',
     ],
-    tags: ['React', 'ADEME', 'Carbone', 'Local-first'],
+    tags: ['TCO', 'Python', 'Analyse prédictive', 'Mobilité électrique'],
+    icon: 'bolt',
+    impact: { value: '75 M€', label: 'de budget annuel réparti' },
+    demo: 'tco',
+    demoNote: 'Déplacez les curseurs : le point de bascule entre thermique et électrique se déplace en direct.',
+    featured: true,
+  },
+  {
+    slug: 'rapprochement-actifs',
+    title: 'Rapprocher des actifs comptables par IA',
+    tagline: "Fiabiliser un patrimoine en reliant l'inventaire technique à la comptabilité.",
+    year: '2023 · 2024',
+    role: 'Conseiller, direction financière',
+    sector: "Opérateur national d'électricité",
+    quality: 'Traitement de données',
+    intro:
+      "Deux référentiels décrivaient les mêmes actifs avec des libellés différents. J'ai conçu un outil de rapprochement qui normalise les libellés, calcule une similarité et propose les paires à valider, ce qui a permis d'assainir des encours anciens.",
+    highlights: [
+      'Normalisation des libellés : casse, abréviations, unités',
+      'Score de similarité textuelle et règles de cohérence sur les montants',
+      'File de validation pour les cas ambigus',
+      'Plus de 100 M€ d’encours anciens résorbés',
+    ],
+    tags: ['Python', 'NLP', 'Qualité de données', 'Finance'],
+    icon: 'database',
+    impact: { value: '100 M€+', label: "d'encours anciens résorbés" },
+    demo: 'matching',
+    demoNote: 'Réglez le seuil de similarité : précision et rappel se recalculent sur les deux registres.',
+    featured: true,
+  },
+  {
+    slug: 'prevision-eolien',
+    title: 'Prévoir la production de parcs éoliens',
+    tagline: 'Un modèle de machine learning alimenté par la météo.',
+    year: '2021 · 2022',
+    role: 'Data Scientist R&D',
+    sector: 'Énergies renouvelables',
+    quality: 'Machine Learning',
+    intro:
+      "Pour anticiper la production de parcs éoliens, j'ai développé un modèle prospectif sous Python : récupération des données météo par API, préparation en SQL, entraînement, puis restitution des résultats aux équipes d'exploitation.",
+    highlights: [
+      'Collecte automatisée des données météo par API',
+      'Préparation et contrôle des données en SQL',
+      'Comparaison de plusieurs familles de modèles',
+      'Restitution des KPI sous Tableau et passation aux équipes',
+    ],
+    tags: ['Python', 'Machine Learning', 'SQL', 'API', 'Tableau'],
+    icon: 'brain-circuit',
+    demo: 'wind',
+    demoNote: "Changez de modèle : la courbe s'ajuste et l'erreur sur les données de test se met à jour.",
+  },
+  {
+    slug: 'prevision-consommation',
+    title: "Prévoir la consommation d'électricité à 2030",
+    tagline: 'Des scénarios chiffrés, avec leur marge d’incertitude.',
+    year: '2022 · 2023',
+    role: 'Analyste',
+    sector: "Acteurs publics de l'énergie",
+    quality: 'Statistiques',
+    intro:
+      "Quelle consommation attendre en 2030 sur un territoire ? J'ai combiné machine learning et modélisation économétrique pour produire des scénarios, puis dimensionné le plan à moyen terme qui en découle.",
+    highlights: [
+      'Prévision de la consommation à horizon 2030',
+      'Modélisation économétrique des activités (200 M€, 800 agents)',
+      "Scénarios et intervalles d'incertitude",
+      'Dimensionnement du plan à moyen terme',
+    ],
+    tags: ['Économétrie', 'Machine Learning', 'Python', 'Scénarios'],
+    icon: 'calendar',
+    demo: 'forecast',
+    demoNote: "Modifiez les hypothèses : 400 simulations dessinent la médiane et l'intervalle P10 · P90.",
+  },
+  {
+    slug: 'trajectoire-carbone',
+    title: 'Construire une trajectoire bas-carbone',
+    tagline: 'Du bilan aux leviers, classés par coût et par impact.',
+    year: '2025',
+    role: 'Conception et développement',
+    sector: 'Outil personnel',
+    quality: 'Synthèse stratégique',
+    intro:
+      "Un outil de bilan gaz à effet de serre sur les scopes 1, 2 et 3, qui ne se contente pas de mesurer : il projette une trajectoire de réduction et classe les leviers. Aucune donnée ne quitte le navigateur.",
+    highlights: [
+      'Bilan GES sur les scopes 1, 2 et 3',
+      "Facteurs d'émission de la Base Empreinte de l'ADEME",
+      'Leviers classés par coût de la tonne évitée',
+      'Fonctionne entièrement en local',
+    ],
+    tags: ['React', 'TypeScript', 'Carbone', 'Local-first'],
     icon: 'leaf',
     impact: { value: '3 scopes', label: 'couverts par le bilan GES' },
-  },
-  {
-    slug: 'empreinte-conseil',
-    title: 'Empreinte Conseil',
-    tagline: "Calculateur d'empreinte carbone appliqué aux missions de conseil.",
-    year: '2025',
-    role: 'Design produit & développement',
-    type: 'Outil métier',
-    intro:
-      "Estimer l'empreinte carbone d'une mission de conseil : déplacements, hébergement, matériel : pour la rendre visible et actionnable dès le cadrage. Implémenté depuis un comp de design sur un design system existant.",
-    highlights: [
-      "Modèle de calcul adapté au déroulé réel d'une mission",
-      "Implémentation fidèle à un design system existant",
-      "Restitution graphique pensée pour la présentation client",
-    ],
-    tags: ['React', 'Design system', 'Carbone'],
-    icon: 'briefcase',
-  },
-  {
-    slug: 'pronos-mondial',
-    title: 'Pronos Mondial',
-    tagline: "Jeu de pronostics football, installable sur mobile.",
-    year: '2026',
-    role: 'Projet personnel',
-    type: 'PWA',
-    intro:
-      "Une application web progressive installable sur l'écran d'accueil : on pronostique le score des matchs, on marque des points, on grimpe au classement. Pensée en mode solo et entièrement locale : aucun compte, aucun serveur.",
-    highlights: [
-      "PWA installable, utilisable hors connexion",
-      "Système de points et classement",
-      "Données structurées pour brancher une vraie API ensuite",
-    ],
-    tags: ['PWA', 'React', 'Offline', 'Mobile'],
-    icon: 'trophy',
+    demo: 'trajectory',
+    demoNote: "Activez les leviers : la trajectoire se rapproche de la cible et le coût s'additionne.",
   },
   {
     slug: 'mathware',
     title: 'MathWare',
-    tagline: 'Mini-jeux mathématiques.',
+    tagline: 'Des mini-jeux de calcul mental, pour le plaisir.',
     year: '2025',
     role: 'Projet personnel',
-    type: 'Jeu web',
+    sector: 'Jeu web',
+    quality: "Sens du produit",
     intro:
       "Une série de mini-jeux courts autour du calcul mental, pensés pour être pris en main en quelques secondes et rejoués sans friction.",
-    highlights: [
-      'Plusieurs modes de jeu courts',
-      'Boucle de jeu immédiate, sans écran de configuration',
-    ],
+    highlights: ['Boucle de jeu immédiate, sans écran de configuration', 'Plusieurs modes de jeu courts'],
     tags: ['React', 'Jeu', 'Interaction'],
-    icon: 'brain-circuit',
+    icon: 'sparkles',
+    demo: 'math',
+    demoNote: 'Trente secondes, un maximum de bonnes réponses.',
   },
 ]
 
-export const getProject = (slug?: string) =>
-  projects.find((p) => p.slug === slug)
+export const getProject = (slug?: string) => projects.find((p) => p.slug === slug)

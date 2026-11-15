@@ -2,10 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { site } from '../data/site'
+import { GameToggle } from '../game/Game'
 
 const NAV = [
   { to: '/', label: 'Accueil' },
   { to: '/projets', label: 'Projets' },
+  { to: '/articles', label: 'Articles' },
+  { to: '/ressources', label: 'Ressources' },
   { to: '/a-propos', label: 'À propos' },
   { to: '/contact', label: 'Contact' },
 ]
@@ -85,6 +88,7 @@ export function Header() {
           </div>
           <div className="topbar__end">
             <Nav />
+            <GameToggle />
           </div>
         </div>
       </header>
@@ -102,6 +106,7 @@ export function Header() {
           </Link>
           <div className="topbar__end">
             <Nav />
+            <GameToggle />
           </div>
         </div>
       </motion.header>
