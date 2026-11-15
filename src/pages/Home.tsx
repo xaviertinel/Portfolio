@@ -101,7 +101,7 @@ export default function Home() {
         <Kwh id="home-parcours" style={{ left: '22%', top: '42%' }} />
         <div className="block__label">
           <h2 className="xt-h2 slash">Parcours</h2>
-          <p className="xt-small block__note">Cinq ans entre data science et conseil en stratégie, toujours dans l'énergie. Les noms des clients restent confidentiels.</p>
+          <p className="xt-small block__note">Cinq ans entre data science et conseil en stratégie, toujours dans l'énergie.</p>
           <Link to="/a-propos" className="xt-link block__more">Parcours complet</Link>
         </div>
         <Reveal className="block__body"><Experience /></Reveal>

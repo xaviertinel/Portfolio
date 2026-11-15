@@ -30,4 +30,4 @@ Design system du portfolio de Xavier Tinel (React 19 + TypeScript + Vite). Lire 
 
 - Polices : Helvetica partout (`font-display` et `font-body`), plus de Google Fonts. Titres en graisse 700.
 - Thème clair uniquement, fond blanc.
-- Aucun nom de client ni d'employeur dans les textes : secteur générique. Les démos sont sur données synthétiques.
+- Les clients sont nommés (choix de Xavier), mais jamais leur charte graphique ni leurs données : les démos tournent sur données synthétiques.

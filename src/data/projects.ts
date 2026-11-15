@@ -3,7 +3,7 @@ import type { IconName } from '../design-system/icons'
 // ────────────────────────────────────────────────────────────────
 //  AJOUTER UN PROJET
 //  Dupliquez un bloc et changez les valeurs. `demo` désigne la démo
-//  interactive (voir src/demos/index.tsx). Jamais de nom de client.
+//  interactive (voir src/demos/index.tsx). Les démos restent sur données synthétiques.
 // ────────────────────────────────────────────────────────────────
 
 export type DemoKey = 'bi' | 'tco' | 'matching' | 'wind' | 'forecast' | 'trajectory' | 'math'
@@ -15,7 +15,11 @@ export type Project = {
   tagline: string
   year: string
   role: string
-  /** Secteur générique, jamais de nom de client */
+  /** Entreprise cliente (affichée avec son logo), ou nom du projet personnel */
+  client: string
+  /** Logo dans public/logos/ : ex. "/logos/edf.svg". Sans logo, le nom du client s'affiche. */
+  logo?: string
+  /** Secteur d'activité */
   sector: string
   /** Qualité mise en avant pour un recruteur */
   quality: string
@@ -34,9 +38,10 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'pilotage-maintenance',
-    title: 'Piloter la maintenance de sites industriels',
-    tagline: 'Un tableau de bord décisionnel bâti avec les opérateurs de terrain.',
+    slug: 'edf-maintenance-cnpe',
+    client: 'EDF',
+    title: "Tableau de bord de la maintenance des CNPE",
+    tagline: "Piloter la maintenance des centrales nucléaires, avec des indicateurs bâtis sur le terrain.",
     year: '2025 · 2026',
     role: 'Data Scientist',
     sector: 'Production nucléaire',
@@ -57,15 +62,16 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'electrification-flotte',
-    title: 'Électrifier une flotte de véhicules',
-    tagline: 'Répartir un budget annuel et objectiver chaque remplacement par le TCO.',
+    slug: 'enedis-veille-mobilite',
+    client: 'Enedis',
+    title: "Mobilité électrique : veille et électrification de la flotte",
+    tagline: "Suivre la mobilité électrique et objectiver chaque remplacement de véhicule par le TCO.",
     year: '2025 · 2026',
     role: 'Data Scientist',
     sector: 'Réseau de distribution',
     quality: 'Modélisation économique',
     intro:
-      "Objectif : 100 % de véhicules électriques à horizon 2030. J'ai construit le modèle qui répartit le budget annuel sur le territoire, calcule le coût total de possession de chaque remplacement et anticipe l'impact sur les activités.",
+      "Objectif : 100\u00a0% de véhicules électriques à horizon 2030. J'ai tenu la veille sur la mobilité électrique (marché, usages, recharge) et construit le modèle qui répartit le budget annuel sur le territoire, calcule le coût total de possession de chaque remplacement et anticipe l'impact sur les activités.",
     highlights: [
       'Répartition territoriale du budget annuel de 75 M€',
       'Calcul de TCO sur 10 ans, véhicule par véhicule',
@@ -80,9 +86,10 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'rapprochement-actifs',
-    title: 'Rapprocher des actifs comptables par IA',
-    tagline: "Fiabiliser un patrimoine en reliant l'inventaire technique à la comptabilité.",
+    slug: 'onee-rapprochement-inventaire',
+    client: 'ONEE',
+    title: "Rapprochement de l'inventaire physique et comptable par IA",
+    tagline: "Réconcilier l'inventaire physique et l'inventaire comptable pour fiabiliser le patrimoine.",
     year: '2023 · 2024',
     role: 'Conseiller, direction financière',
     sector: "Opérateur national d'électricité",
@@ -103,9 +110,10 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'prevision-eolien',
-    title: 'Prévoir la production de parcs éoliens',
-    tagline: 'Un modèle de machine learning alimenté par la météo.',
+    slug: 'edf-ps-prediction-eolien',
+    client: 'EDF Power Solutions',
+    title: "Prédiction ML de la production des parcs éoliens",
+    tagline: "Anticiper la production des parcs éoliens grâce au machine learning.",
     year: '2021 · 2022',
     role: 'Data Scientist R&D',
     sector: 'Énergies renouvelables',
@@ -124,28 +132,31 @@ export const projects: Project[] = [
     demoNote: "Changez de modèle : la courbe s'ajuste et l'erreur sur les données de test se met à jour.",
   },
   {
-    slug: 'prevision-consommation',
-    title: "Prévoir la consommation d'électricité à 2030",
-    tagline: 'Des scénarios chiffrés, avec leur marge d’incertitude.',
+    slug: 'cre-dgec-monte-carlo-irve',
+    client: 'CRE & DGEC',
+    title: "Simulations Monte Carlo d'IRVE",
+    tagline: "Simuler le déploiement des bornes de recharge et la demande d'électricité à 2030.",
     year: '2022 · 2023',
     role: 'Analyste',
-    sector: "Acteurs publics de l'énergie",
+    sector: "Régulation de l'énergie",
     quality: 'Statistiques',
     intro:
-      "Quelle consommation attendre en 2030 sur un territoire ? J'ai combiné machine learning et modélisation économétrique pour produire des scénarios, puis dimensionné le plan à moyen terme qui en découle.",
+      "Combien de points de recharge faudra-t-il en 2030, et pour quelle consommation ? J'ai combiné machine learning, modélisation économétrique et simulations Monte Carlo pour produire des scénarios avec leur incertitude, puis dimensionné le plan à moyen terme qui en découle.",
     highlights: [
-      'Prévision de la consommation à horizon 2030',
+      "Simulations Monte Carlo du déploiement des IRVE (infrastructures de recharge)",
+      "Prévision de la consommation d'électricité à horizon 2030",
       'Modélisation économétrique des activités (200 M€, 800 agents)',
       "Scénarios et intervalles d'incertitude",
       'Dimensionnement du plan à moyen terme',
     ],
-    tags: ['Économétrie', 'Machine Learning', 'Python', 'Scénarios'],
+    tags: ['Monte Carlo', 'IRVE', 'Économétrie', 'Python'],
     icon: 'calendar',
     demo: 'forecast',
-    demoNote: "Modifiez les hypothèses : 400 simulations dessinent la médiane et l'intervalle P10 · P90.",
+    demoNote: "Modifiez les hypothèses : 400 simulations dessinent le besoin médian en points de recharge et l'intervalle P10 · P90.",
   },
   {
     slug: 'trajectoire-carbone',
+    client: 'Trajectoire',
     title: 'Construire une trajectoire bas-carbone',
     tagline: 'Du bilan aux leviers, classés par coût et par impact.',
     year: '2025',
@@ -168,6 +179,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'mathware',
+    client: 'MathWare',
     title: 'MathWare',
     tagline: 'Des mini-jeux de calcul mental, pour le plaisir.',
     year: '2025',

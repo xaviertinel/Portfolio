@@ -1,5 +1,4 @@
 // Infos personnelles affichées partout sur le site. Modifiez librement.
-// Règle : aucun nom de client ni d'employeur, uniquement le secteur.
 export const site = {
   name: 'Xavier Tinel',
   shortName: 'Xavier Tinel',
@@ -33,39 +32,39 @@ export const site = {
     { label: 'Management', items: ['Équipes projet de 5 à 10 personnes', 'PMO', 'Encadrement'] },
   ],
 
-  /** Parcours antichronologique, sans nom d'entreprise */
+  /** Parcours antichronologique */
   experience: [
     {
-      tab: 'Conseil',
+      tab: 'BearingPoint',
       title: 'Consultant en stratégie',
-      org: 'Cabinet de conseil international',
+      org: 'BearingPoint',
       date: '09/2022 · aujourd’hui',
       place: 'Paris, La Défense',
       current: true,
       points: [
         "11 missions chez 7 acteurs de l'énergie",
-        'Veille sectorielle et rédaction d’une newsletter hebdomadaire sur la durabilité dans les utilities',
-        "Élaboration d'un livre blanc sur l'impact des énergies renouvelables sur le vivant",
+        'Veille sectorielle et rédaction de la newsletter hebdomadaire « Sustainability in utilities »',
+        'Élaboration du livre blanc « Impact des EnR sur le vivant »',
       ],
     },
     {
-      tab: 'Nucléaire',
+      tab: 'EDF',
       title: 'Data Scientist, direction des opérations',
-      org: 'Exploitant de centrales nucléaires (mission de conseil)',
+      org: 'EDF, nucléaire (mission de conseil)',
       date: '11/2025 · aujourd’hui',
       place: 'Île-de-France',
       current: true,
       points: [
-        'Vision stratégique de la maintenance des centrales',
+        'Vision stratégique de la maintenance des CNPE',
         'Plus de 50 indicateurs stratégiques définis avec les opérateurs de terrain',
         'Traitement de bases de données volumineuses à fort enjeu de sûreté',
         'Conception du tableau de bord décisionnel sous Power BI',
       ],
     },
     {
-      tab: 'Réseau',
+      tab: 'Enedis',
       title: 'Data Scientist, direction stratégique',
-      org: 'Gestionnaire de réseau de distribution (mission de conseil)',
+      org: 'Enedis (mission de conseil)',
       date: '02/2025 · aujourd’hui',
       place: 'Paris, La Défense',
       current: true,
@@ -77,9 +76,9 @@ export const site = {
       ],
     },
     {
-      tab: 'Finance',
+      tab: 'ONEE',
       title: 'Conseiller auprès de la direction financière',
-      org: "Opérateur national d'électricité (mission de conseil)",
+      org: "Office national de l'électricité du Maroc (mission de conseil)",
       date: '02/2023 · 02/2024',
       place: 'Casablanca, Maroc',
       points: [
@@ -89,9 +88,9 @@ export const site = {
       ],
     },
     {
-      tab: 'Prévision',
+      tab: 'DGEC / CRE',
       title: 'Analyste, domaine opérations',
-      org: "Acteurs publics de l'énergie (mission de conseil)",
+      org: 'DGEC / CRE (mission de conseil)',
       date: '09/2022 · 09/2023',
       place: 'Hauts-de-France',
       points: [
@@ -101,9 +100,9 @@ export const site = {
       ],
     },
     {
-      tab: 'Éolien',
+      tab: 'EDF Power Solutions',
       title: 'Data Scientist, R&D direction des opérations',
-      org: "Producteur d'énergies renouvelables",
+      org: 'EDF Power Solutions (ex EDF Renouvelables)',
       date: '09/2021 · 09/2022',
       place: 'Montpellier',
       points: [

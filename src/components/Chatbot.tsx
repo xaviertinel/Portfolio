@@ -17,11 +17,11 @@ type Msg = Reply & { from: 'bot' | 'me' }
 const SUGGESTIONS = ['Qui est Xavier ?', 'Ses projets', 'Ses compétences', 'Son parcours', 'Télécharger le CV', 'Le contacter']
 
 const PROJECT_KEYS: [RegExp, string][] = [
-  [/maintenance|nucleaire|tableau de bord|power ?bi|dashboard|\bbi\b|visualisation/, 'pilotage-maintenance'],
-  [/flotte|vehicule|tco|electrif|mobilite/, 'electrification-flotte'],
-  [/rapprochement|comptab|actif|financ|nettoyage|qualite de donnee/, 'rapprochement-actifs'],
-  [/eolien|vent|machine learning|\bml\b|modele predictif/, 'prevision-eolien'],
-  [/consommation|2030|econometr|statisti|scenario|prevision/, 'prevision-consommation'],
+  [/cnpe|maintenance|nucleaire|tableau de bord|power ?bi|dashboard|\bbi\b|visualisation/, 'edf-maintenance-cnpe'],
+  [/enedis|veille|flotte|vehicule|tco|electrif|mobilite/, 'enedis-veille-mobilite'],
+  [/onee|maroc|inventaire|rapprochement|comptab|actif|financ|nettoyage|qualite de donnee/, 'onee-rapprochement-inventaire'],
+  [/power solutions|eolien|vent|machine learning|\bml\b|modele predictif/, 'edf-ps-prediction-eolien'],
+  [/\bcre\b|dgec|irve|borne|monte carlo|consommation|2030|econometr|statisti|scenario|prevision/, 'cre-dgec-monte-carlo-irve'],
   [/carbone|trajectoire|ges\b|bilan|decarbon/, 'trajectoire-carbone'],
   [/mathware|calcul mental/, 'mathware'],
 ]
@@ -45,7 +45,7 @@ function answer(raw: string): Reply {
   if (hit) {
     const p = projects.find((x) => x.slug === hit[1])!
     return {
-      text: `${p.title}. ${p.intro}`,
+      text: `${p.client} · ${p.title}. ${p.intro}`,
       kpis: p.impact ? [p.impact] : undefined,
       list: p.highlights.slice(0, 3),
       actions: [{ label: 'Ouvrir la démo interactive', to: `/projets/${p.slug}` }, { label: 'Autres projets', say: 'Ses projets' }],
@@ -183,7 +183,7 @@ export function Chatbot() {
                       {m.cards.map((p) => (
                         <Link key={p.slug} to={`/projets/${p.slug}`} className="mini-card" onClick={() => setOpen(false)}>
                           <span className="mini-card__icon"><Icon name={p.icon} size="sm" /></span>
-                          <span><strong>{p.title}</strong><small>{p.quality}</small></span>
+                          <span><strong>{p.title}</strong><small>{p.client} · {p.quality}</small></span>
                         </Link>
                       ))}
                     </div>

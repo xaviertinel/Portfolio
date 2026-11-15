@@ -3,6 +3,7 @@ import type { Project } from '../data/projects'
 import { Icon } from '../design-system/Icon'
 import { Tag } from './ui'
 import { spot } from './effects'
+import { ClientLogo } from './ClientLogo'
 
 /** Carte projet : toute la carte est le lien. Halo qui suit la souris. */
 export function ProjectCard({ project }: { project: Project }) {
@@ -13,7 +14,8 @@ export function ProjectCard({ project }: { project: Project }) {
         <span className="project-card__quality">{project.quality}</span>
       </div>
       <div className="xt-card__meta">
-        <span className="xt-eyebrow">{project.sector} · {project.year}</span>
+        <ClientLogo project={project} />
+        <span className="xt-eyebrow">{project.sector}</span>
       </div>
       <h3 className="xt-h3">{project.title}</h3>
       <p className="xt-small">{project.tagline}</p>

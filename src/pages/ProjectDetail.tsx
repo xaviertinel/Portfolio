@@ -15,6 +15,7 @@ export default function ProjectDetail() {
   const next = projects[(index + 1) % projects.length]
   const Demo = demos[project.demo]
   const facts = [
+    { label: 'Client', value: project.client },
     { label: 'Période', value: project.year },
     { label: 'Rôle', value: project.role },
     { label: 'Secteur', value: project.sector },
@@ -53,7 +54,7 @@ export default function ProjectDetail() {
             </header>
             <Demo />
             <p className="xt-small demo-frame__note">
-              Démonstration anonymisée : les données sont générées pour l'exemple et ne proviennent d'aucun client. Elle illustre la méthode, pas les résultats réels de la mission.
+              Démonstration anonymisée : les données sont générées pour l'exemple et ne proviennent pas du client. Elle illustre la méthode, pas les résultats réels de la mission.
             </p>
           </section>
         </Reveal>

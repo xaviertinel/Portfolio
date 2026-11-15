@@ -5,12 +5,12 @@ export const starterPack: PackItem[] = [
   {
     id: 'casque', name: 'Le casque de chantier blanc', x: 20, y: 27,
     what: 'Un casque de sécurité réglementaire, celui qu’on enfile avant d’entrer sur un site industriel.',
-    why: "Il dit ma façon de travailler : sur le terrain. Je construis mes indicateurs avec les opérateurs, que ce soit dans une centrale, sur un réseau électrique ou sur des infrastructures à l'international. Un indicateur que le terrain ne reconnaît pas ne sert à rien.",
+    why: "Il dit ma façon de travailler : sur le terrain. Je construis mes indicateurs avec les opérateurs, que ce soit sur des centrales nucléaires (EDF), sur le réseau électrique (Enedis) ou sur des infrastructures à l'international (ONEE, au Maroc). Un indicateur que le terrain ne reconnaît pas ne sert à rien.",
   },
   {
     id: 'voiture', name: 'La petite voiture électrique verte', x: 58, y: 18,
     what: 'Une miniature de véhicule électrique, avec un éclair sur le toit.',
-    why: "Elle résume mon terrain de jeu : l'énergie et le transport bas-carbone. Double cursus tourné vers la production durable et les transitions énergétiques, puis des missions très concrètes d'électrification de flottes et de trajectoires de décarbonation.",
+    why: "Elle résume mon terrain de jeu : l'énergie et le transport bas-carbone. Double cursus tourné vers la production durable et les transitions énergétiques, puis des missions très concrètes d'électrification de flottes et de trajectoires de décarbonation, comme chez Enedis.",
   },
   {
     id: 'clavier', name: 'Le clavier mécanique sans fil', x: 84, y: 40,
